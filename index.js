@@ -38,7 +38,7 @@ wdtEmojiBundle.defaults = {
     allowNative  : false,
     emojiType: `twitter`,
     emojiSheets: {
-		twitter: require(`emoji-datasource/twitter/sheets/32.png`)
+		twitter: require(`emoji-datasource/img/twitter/sheets/32.png`)
     },
 	emojiData: {Symbols: require(`emoji-datasource`)}
 };
