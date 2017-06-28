@@ -266,7 +266,7 @@ wdtEmojiBundle.getRandomPickerColor = function(){
 };
 
 wdtEmojiBundle.close = function(){
-	if(this.openPicker) this.closePickers(this.pickers[this.openPicker]);
+	if(this.openPicker) this.closePicker(this.pickers[this.openPicker]);
 
 	return this;
 };
