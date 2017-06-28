@@ -828,7 +828,7 @@ function emoji(){
 
 const moduleName = `angular-emoji-picker`;
 
-angular.module(moduleName)
+angular.module(moduleName, [])
 	.directive(`emojiPicker`, emojiPicker)
 	.directive(`emojiField`, emojiField)
 	.directive(`emojiParent`, emojiParent)
