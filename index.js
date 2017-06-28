@@ -23,8 +23,6 @@ wdtEmojiBundle.defaults = {
     pickerColors : ['green', 'pink', 'yellow', 'blue', 'gray'],
     textMode     : true,
     sectionOrders: {
-      'Recent'  : 10,
-      'Custom'  : 9,
       'People'  : 8,
       'Nature'  : 7,
       'Foods'   : 6,
@@ -40,7 +38,7 @@ wdtEmojiBundle.defaults = {
     emojiSheets: {
 		twitter: require(`emoji-datasource/img/twitter/sheets/32.png`)
     },
-	emojiData: {Symbols: require(`emoji-datasource`)}
+	emojiData: require(`emoji-datasource`)
 };
 
 wdtEmojiBundle.init = function(popup){
@@ -67,9 +65,6 @@ wdtEmojiBundle.init = function(popup){
 
     document.querySelector('body').dataset.wdtEmojiBundle = wdtEmojiBundle.defaults.emojiType;
 
-    var recent = this.popup[0].querySelector('[data-group-name="Recent"]');
-    if (recent) recent.innerHTML = this.emoji.replace_colons(':clock3:');
-
     var people = this.popup[0].querySelector('[data-group-name="People"]');
     if (people) people.innerHTML = this.emoji.replace_colons(':sunglasses:');
 
@@ -94,9 +89,6 @@ wdtEmojiBundle.init = function(popup){
     var flags = this.popup[0].querySelector('[data-group-name="Flags"]');
     if (flags) flags.innerHTML = this.emoji.replace_colons(':waving_white_flag:');
 
-    var custom = this.popup[0].querySelector('[data-group-name="Custom"]');
-    if (custom) custom.innerHTML = this.emoji.replace_colons(':dark_sunglasses:');
-
     return this;
 };
 
@@ -104,9 +96,6 @@ wdtEmojiBundle.add = function(field, picker){
 	if(!this.initialized) throw "Picker not initialized";
 
 	picker.on(`click`, event => {
-		console.log(event.target);
-		debugger;
-
 		wdtEmojiBundle.openPicker(event, field, picker);
 	});
 
@@ -191,11 +180,9 @@ wdtEmojiBundle.fillPickerPopup = function(){
 
     if(this.pickerFilled) return this;
 
-    // @todo - [needim] - Support for recent and custom emoji list
     var sectionsContainer = this.popup[0].querySelector('.wdt-emoji-sections'),
-      sections = {'Recent': [], 'Custom': []},
+      sections = {},
       sortedSections = [];
-
 
 	// TODO: Turn into webpack loader (as much as possible)
 	for(const i in wdtEmojiBundle.defaults.emojiData){
@@ -780,7 +767,7 @@ function emojiParent(){
 		let field, picker;
 
 		function init(){
-			if(!(field || picker)) return;
+			if(!(field && picker)) return;
 
 			wdtEmojiBundle.add(field, picker);
 		}
