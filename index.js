@@ -316,7 +316,7 @@ wdtEmojiBundle.closePicker = function(picker){
 	function liveExact(eventType, className, tagName, callback){
 		wdtEmojiBundle.sectionsContainer.addEventListener(eventType, function(event){
 			const target = event.target;
-			if(target.tagName === tagName && target.className.indexOf(className) === 0) callback.apply(this, arguments);
+			if(target.tagName === tagName && target.className.indexOf(className) === 0) callback.apply(target, arguments);
 		});
 	}
 
