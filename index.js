@@ -320,7 +320,7 @@ wdtEmojiBundle.closePicker = function(picker){
 		});
 	}
 
-    liveExact(`mouseover`, `wdt-emoji`, `a`, function(){
+    liveExact(`mouseover`, `wdt-emoji`, `A`, function(){
       if (wdtEmojiBundle.previewTimer)
         clearTimeout(wdtEmojiBundle.previewTimer);
 
@@ -341,7 +341,7 @@ wdtEmojiBundle.closePicker = function(picker){
       return false;
     });
 
-    liveExact(`mouseout`, `wdt-emoji`, `a`, function(){
+    liveExact(`mouseout`, `wdt-emoji`, `A`, function(){
       if (wdtEmojiBundle.previewExitTimer)
         clearTimeout(wdtEmojiBundle.previewExitTimer);
 
