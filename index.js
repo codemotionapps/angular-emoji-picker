@@ -61,6 +61,7 @@ wdtEmojiBundle.init = function(popup){
     self.searchInput = this.popup[0].querySelector('#wdt-emoji-search');
     self.previewImg = this.popup[0].querySelector('#wdt-emoji-preview-img');
     self.previewName = this.popup[0].querySelector('#wdt-emoji-preview-name');
+	this.sectionsContainer = this.popup[0].querySelector('.wdt-emoji-sections');
 
     document.querySelector('body').dataset.wdtEmojiBundle = wdtEmojiBundle.defaults.emojiType;
 
@@ -179,8 +180,7 @@ wdtEmojiBundle.fillPickerPopup = function(){
 
     if(this.pickerFilled) return this;
 
-    var sectionsContainer = this.popup[0].querySelector('.wdt-emoji-sections'),
-      sections = {},
+    var sections = {},
       sortedSections = [];
 
 	// TODO: Turn into webpack loader (as much as possible)
@@ -254,7 +254,7 @@ wdtEmojiBundle.fillPickerPopup = function(){
 
           emojiSection.appendChild(emojiTitle);
           emojiSection.appendChild(emojiListDiv);
-          sectionsContainer.appendChild(emojiSection);
+          wdtEmojiBundle.sectionsContainer.appendChild(emojiSection);
         }
       }
     }
@@ -313,8 +313,13 @@ wdtEmojiBundle.closePicker = function(picker){
 
     live('click', '.wdt-emoji-popup-mobile-closer', () => wdtEmojiBundle.close());
 
-    live('mouseover', '.wdt-emoji-list a.wdt-emoji', function(){
+	function liveExact(eventType, className, callback){
+		wdtEmojiBundle.sectionsContainer.addEventListener(eventType, function(event){
+			if(event.target.className.indexOf(className) === 0) callback.apply(this, arguments);
+		});
+	}
 
+    liveExact(`mouseover`, `wdt-emoji`, function(){
       if (wdtEmojiBundle.previewTimer)
         clearTimeout(wdtEmojiBundle.previewTimer);
 
@@ -335,7 +340,7 @@ wdtEmojiBundle.closePicker = function(picker){
       return false;
     });
 
-    live('mouseout', '.wdt-emoji-list a.wdt-emoji', function () {
+    liveExact(`mouseout`, `wdt-emoji`, function () {
       if (wdtEmojiBundle.previewExitTimer)
         clearTimeout(wdtEmojiBundle.previewExitTimer);
 
@@ -383,9 +388,8 @@ wdtEmojiBundle.closePicker = function(picker){
    * @returns {boolean}
    */
 wdtEmojiBundle.search = function(q){
-    var sections = wdtEmojiBundle.popup[0].querySelector('.wdt-emoji-sections'),
-      searchResultH3 = wdtEmojiBundle.popup[0].querySelector('#wdt-emoji-search-result-title'),
-      emojiList = sections.querySelectorAll('.wdt-emoji'),
+    var searchResultH3 = wdtEmojiBundle.popup[0].querySelector('#wdt-emoji-search-result-title'),
+      emojiList = this.sectionsContainer.querySelectorAll('.wdt-emoji'),
       zeroText = wdtEmojiBundle.popup[0].querySelector('#wdt-emoji-no-result'),
       found = 0;
 
@@ -575,18 +579,11 @@ wdtEmojiBundle.render = function(text){
     }
   }; 
 
-  /**
-   *
-   * @param eventType
-   * @param elementQuerySelector
-   * @param cb
-   */
-  var live = function (eventType, elementQuerySelector, cb) {
+var live = function(eventType, elementQuerySelector, cb){
     document.addEventListener(eventType, function (event) {
 
-      var qs = document.querySelectorAll(elementQuerySelector);
+		var qs = document.querySelectorAll(elementQuerySelector);
 
-      if (qs) {
         var el = event.target, index = -1;
         while (el && ((index = Array.prototype.indexOf.call(qs, el)) === -1)) {
           el = el.parentElement;
@@ -595,9 +592,8 @@ wdtEmojiBundle.render = function(text){
         if (index > -1) {
           cb.call(el, event);
         }
-      }
     });
-  };
+};
 
   /**
    * Applies css properties to an element, similar to the jQuery
