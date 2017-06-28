@@ -313,13 +313,14 @@ wdtEmojiBundle.closePicker = function(picker){
 
     live('click', '.wdt-emoji-popup-mobile-closer', () => wdtEmojiBundle.close());
 
-	function liveExact(eventType, className, callback){
+	function liveExact(eventType, className, tagName, callback){
 		wdtEmojiBundle.sectionsContainer.addEventListener(eventType, function(event){
-			if(event.target.className.indexOf(className) === 0) callback.apply(this, arguments);
+			const target = event.target;
+			if(target.tagName === tagName && target.className.indexOf(className) === 0) callback.apply(this, arguments);
 		});
 	}
 
-    liveExact(`mouseover`, `wdt-emoji`, function(){
+    liveExact(`mouseover`, `wdt-emoji`, `a`, function(){
       if (wdtEmojiBundle.previewTimer)
         clearTimeout(wdtEmojiBundle.previewTimer);
 
@@ -328,7 +329,7 @@ wdtEmojiBundle.closePicker = function(picker){
 
       var emo = this;
 
-      wdtEmojiBundle.previewTimer = setTimeout(function () {
+      wdtEmojiBundle.previewTimer = setTimeout(function(){
 
         wdtEmojiBundle.popup.addClass(`preview-mode`);
 
@@ -340,7 +341,7 @@ wdtEmojiBundle.closePicker = function(picker){
       return false;
     });
 
-    liveExact(`mouseout`, `wdt-emoji`, function () {
+    liveExact(`mouseout`, `wdt-emoji`, `a`, function(){
       if (wdtEmojiBundle.previewExitTimer)
         clearTimeout(wdtEmojiBundle.previewExitTimer);
 
