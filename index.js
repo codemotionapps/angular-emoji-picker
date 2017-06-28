@@ -313,8 +313,8 @@ wdtEmojiBundle.closePicker = function(picker){
 
     live('click', '.wdt-emoji-popup-mobile-closer', () => wdtEmojiBundle.close());
 
-    live('mouseenter', '.wdt-emoji-list a.wdt-emoji', function(){
-		debugger;
+    live('mouseover', '.wdt-emoji-list a.wdt-emoji', function(){
+
       if (wdtEmojiBundle.previewTimer)
         clearTimeout(wdtEmojiBundle.previewTimer);
 
@@ -335,7 +335,7 @@ wdtEmojiBundle.closePicker = function(picker){
       return false;
     });
 
-    live('mouseleave', '.wdt-emoji-list a.wdt-emoji', function () {
+    live('mouseout', '.wdt-emoji-list a.wdt-emoji', function () {
       if (wdtEmojiBundle.previewExitTimer)
         clearTimeout(wdtEmojiBundle.previewExitTimer);
 
