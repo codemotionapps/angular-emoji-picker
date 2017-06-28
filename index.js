@@ -61,7 +61,6 @@ wdtEmojiBundle.init = function(popup){
     self.searchInput = this.popup[0].querySelector('#wdt-emoji-search');
     self.previewImg = this.popup[0].querySelector('#wdt-emoji-preview-img');
     self.previewName = this.popup[0].querySelector('#wdt-emoji-preview-name');
-    self.previewAliases = this.popup[0].querySelector('#wdt-emoji-preview-aliases');
 
     document.querySelector('body').dataset.wdtEmojiBundle = wdtEmojiBundle.defaults.emojiType;
 
@@ -314,7 +313,7 @@ wdtEmojiBundle.closePicker = function(picker){
 
     live('click', '.wdt-emoji-popup-mobile-closer', () => wdtEmojiBundle.close());
 
-    live('mouseover', '.wdt-emoji-list a.wdt-emoji', function(){
+    live('mouseenter', '.wdt-emoji-list a.wdt-emoji', function(){
 
       if (wdtEmojiBundle.previewTimer)
         clearTimeout(wdtEmojiBundle.previewTimer);
@@ -330,14 +329,13 @@ wdtEmojiBundle.closePicker = function(picker){
 
         wdtEmojiBundle.previewImg.innerHTML = self.emoji.replace_colons(':' + emo.dataset.wdtEmojiShortname + ':');
         wdtEmojiBundle.previewName.innerHTML = emo.dataset.wdtEmojiShortname;
-        wdtEmojiBundle.previewAliases.innerHTML = emo.dataset.wdtEmojiShortnames;
 
       }, 100);
 
       return false;
     });
 
-    live('mouseout', '.wdt-emoji-list a.wdt-emoji', function () {
+    live('mouseleave', '.wdt-emoji-list a.wdt-emoji', function () {
       if (wdtEmojiBundle.previewExitTimer)
         clearTimeout(wdtEmojiBundle.previewExitTimer);
 
