@@ -10,10 +10,7 @@
     "slack",
     "javascript"
   ],
-  "author": {
-    "name": "Dimitar Nestorov",
-    "url": "http://dimitarnestorov.com"
-  },
+  "author": "Dimitar Nestorov (http://dimitarnestorov.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -29,5 +26,9 @@
   },
   "peerDependencies": {
     "angular": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

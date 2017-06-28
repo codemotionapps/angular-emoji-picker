@@ -1,8 +1,8 @@
 # angular-emoji-picker
 
-Slack like emoji selector with apple/ios, twitter/twemoji, google, emojione, facebook, messenger and custom emoji support. I :heart: opensource.
+Slack like emoji selector with apple/ios, twitter/twemoji, google, emojione, facebook, messenger and custom emoji support.
 
-Thanks to Cal Henderson @iamcal.
+Thanks to Cal Henderson [iamcal](https://github.com/iamcal).
 
 # Installation
 
