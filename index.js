@@ -422,7 +422,7 @@ wdtEmojiBundle.render = function(text){
 
 const addListenerMulti = function(el, events, cb){
 	events = events.split(` `);
-	for(const i = 0; i < events.length; i++){
+	for(let i = 0; i < events.length; i++){
 		el.addEventListener(events[i], cb, false);
 	}
 };
