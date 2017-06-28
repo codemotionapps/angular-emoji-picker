@@ -167,16 +167,10 @@ body[data-wdt-emoji-bundle='apple'] .wdt-emoji[data-has-img-apple='false'] {
   margin-right: 2.5px !important;
   margin-bottom: 1px;
   padding: 6px;
-
-  -webkit-transition: background 500ms ease-out;
-  -moz-transition: background 500ms ease-out;
-  -ms-transition: background 500ms ease-out;
-  -o-transition: background 500ms ease-out;
+  
   transition: background 500ms ease-out;
   text-align: center;
 
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
   border-radius: 6px;
 }
 
@@ -240,7 +234,7 @@ span.emoji-sizer {
 }
 
 span.emoji-outer {
-  display: -moz-inline-box;
+  pointer-events: none;
   display: inline-block;
 
   width: 22px;
