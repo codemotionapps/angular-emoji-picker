@@ -331,7 +331,7 @@ wdtEmojiBundle.bindEvents = function(){
 			wdtEmojiBundle.popup.addClass(`preview-mode`);
 
 			let shortName = `:${emo.dataset.wdtEmojiShortname}:`;
-			if(shortName === wdtEmojiBundle.previewName.innerHTML) return;
+			if(shortName === wdtEmojiBundle.previewAliases.innerHTML) return;
 			wdtEmojiBundle.previewImg.innerHTML = self.emoji.replace_colons(shortName);
 			wdtEmojiBundle.previewName.innerHTML = emo.dataset.wdtEmojiShortname;        wdtEmojiBundle.previewAliases.innerHTML = shortName;
 		}, 100);
