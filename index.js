@@ -314,12 +314,7 @@ wdtEmojiBundle.bindEvents = function(){
 	function liveExact(eventType, className, tagName, callback){
 		wdtEmojiBundle.sectionsContainer.addEventListener(eventType, function(event){
 			const target = event.target;
-			if(target.tagName === tagName &&
-				target.className.indexOf(className) === 0 &&
-				target.dataset.lastEvent !== eventType){
-				target.dataset.lastEvent = eventType;
-				callback.apply(target, arguments);
-			}
+			if(target.tagName === tagName && target.className.indexOf(className) === 0) callback.apply(target, arguments);
 		});
 	}
 
@@ -336,6 +331,7 @@ wdtEmojiBundle.bindEvents = function(){
 			wdtEmojiBundle.popup.addClass(`preview-mode`);
 
 			let shortName = `:${emo.dataset.wdtEmojiShortname}:`;
+			if(shortName === wdtEmojiBundle.previewName.innerHTML) return;
 			wdtEmojiBundle.previewImg.innerHTML = self.emoji.replace_colons(shortName);
 			wdtEmojiBundle.previewName.innerHTML = emo.dataset.wdtEmojiShortname;        wdtEmojiBundle.previewAliases.innerHTML = shortName;
 		}, 100);
