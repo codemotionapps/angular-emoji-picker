@@ -15,7 +15,7 @@ const generateId = (function(){
 const wdtEmojiBundle = {
 	initialized: false,
 	pickers: {},
-	openPicker: undefined,
+	openedPicker: undefined,
 	pickerFilled: false
 };
 
@@ -170,7 +170,7 @@ wdtEmojiBundle.openPicker = function(event, field, pickerButton){
 	pickerButton.addClass(`wdt-emoji-picker-open`);
 	picker.open = true;
 
-	this.openPicker = pickerId;
+	this.openedPicker = pickerId;
 
 	return this;
 };
@@ -266,7 +266,7 @@ wdtEmojiBundle.getRandomPickerColor = function(){
 };
 
 wdtEmojiBundle.close = function(){
-	if(this.openPicker) this.closePicker(this.pickers[this.openPicker]);
+	if(this.openedPicker) this.closePicker(this.pickers[this.openedPicker]);
 
 	return this;
 };
@@ -274,7 +274,7 @@ wdtEmojiBundle.close = function(){
 wdtEmojiBundle.closePicker = function(picker){
 	picker.picker.removeClass(`wdt-emoji-picker-open`);
 	picker.open = false;
-	this.openPicker = undefined;
+	this.openedPicker = undefined;
     this.popup.removeClass(`open`);
     window.removeEventListener(`resize`, repositionPopup);
 

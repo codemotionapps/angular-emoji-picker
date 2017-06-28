@@ -141,7 +141,7 @@ body[data-wdt-emoji-bundle='apple'] .wdt-emoji[data-has-img-apple='false'] {
   position: absolute;
   z-index: 4;
 
-  width: 330px;
+  width: calc(~"100% - 15px");
 }
 
 .wdt-emoji-scroll-wrapper {
@@ -397,23 +397,14 @@ img.emoji {
   line-height: 35px;
 
   position: absolute;
-  top: -35px;
-  left: 50%;
-
-  visibility: hidden;
+  right: 0;
 
   width: 40px;
   height: 35px;
 
-  transform: translateX(-50%);
   text-align: center;
 
-  opacity: 0;
   color: #444;
-  border: 1px solid rgba(0, 0, 0, .1);
-  border-bottom-color: #e7543d;
-  border-radius: 50% 50% 0 0;
-  background-color: rgba(255, 255, 255, .8);
 }
 
 /* iPhone 2G-4S-5-5S in portrait */
@@ -458,10 +449,6 @@ and (orientation: portrait) {
 
     opacity: 1;
   }
-
-  .wdt-emoji-popup h3.sticky {
-    width: 300px;
-  }
 }
 
 /* iPhone 6 in portrait */
@@ -475,9 +462,5 @@ and (orientation: portrait) {
 
   .wdt-emoji-tab {
     width: 30px;
-  }
-
-  .wdt-emoji-popup h3.sticky {
-    width: 359px;
   }
 }
