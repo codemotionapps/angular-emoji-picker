@@ -197,6 +197,12 @@ wdtEmojiBundle.fillPickerPopup = function(){
 		category.push(emoji);
 	}
 
+	for(const i in sections){
+		const category = sections[i];
+
+		category.sort((a, b) => a.sort_order - b.sort_order);
+	}
+
     var sortedSectionsArray = Object.keys(sections).sort(function (a, b) {
       return wdtEmojiBundle.defaults.sectionOrders[a] < wdtEmojiBundle.defaults.sectionOrders[b] ? 1 : -1;
     });
