@@ -725,6 +725,7 @@ function emojiPicker(){
 
 function emoji(){
 	this.render = text => wdtEmojiBundle.render(text);
+	this.defaults = wdtEmojiBundle.defaults;
 }
 
 const moduleName = `angular-emoji-picker`;
