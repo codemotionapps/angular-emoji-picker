@@ -204,7 +204,7 @@ wdtEmojiBundle.fillPickerPopup = function(){
 		return wdtEmojiBundle.defaults.sectionOrders[a] < wdtEmojiBundle.defaults.sectionOrders[b] ? 1 : -1;
 	});
 
-	for(const i in sortedSectionsArray.length){ // eslint-disable-line guard-for-in
+	for(const i in sortedSectionsArray){ // eslint-disable-line guard-for-in
 		sortedSections[sortedSectionsArray[i]] = sections[sortedSectionsArray[i]];
 	}
 
