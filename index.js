@@ -287,10 +287,7 @@ wdtEmojiBundle.closePicker = function(picker){
 	return this;
 };
 
-  /**
-   * void function binds some events for the bundle
-   */
-  wdtEmojiBundle.bindEvents = function () {
+wdtEmojiBundle.bindEvents = function(){
     var self = this;
     var stickers = document.querySelectorAll('.wdt-emoji-section h3');
     if (stickers.length) {
@@ -317,7 +314,12 @@ wdtEmojiBundle.closePicker = function(picker){
 	function liveExact(eventType, className, tagName, callback){
 		wdtEmojiBundle.sectionsContainer.addEventListener(eventType, function(event){
 			const target = event.target;
-			if(target.tagName === tagName && target.className.indexOf(className) === 0) callback.apply(target, arguments);
+			if(target.tagName === tagName &&
+				target.className.indexOf(className) === 0 &&
+				target.dataset.lastEvent !== eventType){
+				target.dataset.lastEvent = eventType;
+				callback.apply(target, arguments);
+			}
 		});
 	}
 
@@ -335,7 +337,7 @@ wdtEmojiBundle.closePicker = function(picker){
 
 			let shortName = `:${emo.dataset.wdtEmojiShortname}:`;
 			wdtEmojiBundle.previewImg.innerHTML = self.emoji.replace_colons(shortName);
-			wdtEmojiBundle.previewName.innerHTML = emo.dataset.wdtEmojiName;        wdtEmojiBundle.previewAliases.innerHTML = shortName;
+			wdtEmojiBundle.previewName.innerHTML = emo.dataset.wdtEmojiShortname;        wdtEmojiBundle.previewAliases.innerHTML = shortName;
 		}, 100);
 
       return false;
@@ -379,7 +381,7 @@ wdtEmojiBundle.closePicker = function(picker){
         e.preventDefault();
       }
     });
-  };
+};
 
   /**
    *
