@@ -314,7 +314,7 @@ wdtEmojiBundle.closePicker = function(picker){
     live('click', '.wdt-emoji-popup-mobile-closer', () => wdtEmojiBundle.close());
 
     live('mouseenter', '.wdt-emoji-list a.wdt-emoji', function(){
-
+		debugger;
       if (wdtEmojiBundle.previewTimer)
         clearTimeout(wdtEmojiBundle.previewTimer);
 
