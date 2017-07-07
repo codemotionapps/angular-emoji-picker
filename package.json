@@ -1,6 +1,6 @@
 {
   "name": "@codemotion/angular-emoji-picker",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "title": "AngularJS emoji picker",
   "description": "Slack like emoji selector with apple, twitter, google, emojione, facebook, messenger and custom emoji support.",
   "homepage": "https://github.com/codemotionapps/angular-emoji-picker",

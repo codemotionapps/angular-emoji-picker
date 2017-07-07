@@ -737,4 +737,7 @@ angular.module(moduleName, [])
 	.directive(`emojiPopup`, emojiPopup)
 	.service(`Emoji`, emoji);
 
-module.exports = moduleName;
+module.exports = {
+	name: moduleName,
+	default: wdtEmojiBundle
+};
