@@ -21,7 +21,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "emoji-datasource": "3.0.0",
+    "emoji-datasource": "4.0.4",
     "emoji-js": "3.2.2"
   },
   "peerDependencies": {
